@@ -17,10 +17,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    fetchArticles(); // استدعاء الفانكشن بدل التكرار
+  }
+
+  void fetchArticles() {
     final newsService = NewsService();
-    articlesFuture = newsService.fetchNews().then(
-          (newsResponse) => newsResponse.articles,
-        );
+    setState(() {
+      articlesFuture = newsService.fetchNews().then(
+            (newsResponse) => newsResponse.articles,
+          );
+    });
   }
 
   @override
@@ -88,12 +94,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8),
                         child: TextButton(
-                          onPressed: () {
-                            NewsService();
-                          },
+                          onPressed: fetchArticles,
                           child: Row(children: [
                             Text(
-                              "See all",
+                              "get News",
                               style: TextStyle(
                                   color: Color(0xFF0080FF), fontSize: 16),
                             ),
