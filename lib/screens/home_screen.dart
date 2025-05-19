@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    fetchArticles(); // استدعاء الفانكشن بدل التكرار
+    fetchArticles(); 
   }
 
   void fetchArticles() {
